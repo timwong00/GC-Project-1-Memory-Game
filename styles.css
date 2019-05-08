@@ -2,7 +2,9 @@
 
 
 
-
+.row {
+  display: flex;
+}
 .card {
   background-image: url(cardback.jpg);
   background-size: cover;
