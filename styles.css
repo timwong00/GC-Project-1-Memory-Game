@@ -1,0 +1,12 @@
+
+
+
+
+
+.card {
+  background-image: url(cardback.jpg);
+  background-size: cover;
+  height: 150px;
+  width: 150px;
+  border: 1px solid rgba(211, 211, 211, 0.52);
+}
