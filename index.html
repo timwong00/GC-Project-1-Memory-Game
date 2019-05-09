@@ -7,18 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Game of Memory</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 
 <body>
     <main>
+        <p>Game will end in <span class="js-timeout">2:00</span></p>
 
         <section class="title">
             <h1>Game of Memory</h1>
         </section>
         <section class="btn_container">
-            <button class="start_btn">Start Game</button>
+            <button id="js-startTimer" class="start_btn">Start Game</button>
             <!-- need timer -->
-            <button class="reset_btn">Reset</button>
+            <button id="js-resetTimer" class="reset_btn">Reset</button>
         </section>
         <section class="card_grid">
             <img src="" alt="bran">
@@ -30,3 +32,4 @@
 </body>
 
 </html>
+
