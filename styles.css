@@ -5,6 +5,7 @@
 
 body {
   background-color: #D5D0C4;
+  background-size: cover;
   font-family: 'Game of Thrones';
 }
 
@@ -15,23 +16,51 @@ main {
   flex-direction: column;
 }
 
+.btn_container{
+  margin-bottom: 15px;
+}
+
 .start_btn:hover, .reset_btn:hover {
   cursor: pointer;
 }
 
-section.card_grid {
-  background-image: url(./images/bran.jpg);
-  background-size: cover;
+.card_grid {
+  width: 300px;
+  height: 400px;
 }
 
 .row {
   display: flex;
+  height: 80px;
 }
+
 .card {
   background-image: url(./images/cardback.jpg);
   background-size: cover;
-  cursor: pointer;
-  height: 150px;
-  width: 150px;
+  width: 80px;
   border: 1px solid rgba(211, 211, 211, 0.52);
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 768px) {
+  body {
+    background-image: url(https://images5.alphacoders.com/637/thumb-1920-637668.jpg);
+  }
+
+  .card_grid{
+    width: 100vh;
+    height: 100vh;
+  }
+
+  .row {
+    height: 20vh;
+  }
+
+  .card {
+    width: 20vh;
+  }
+
 }
