@@ -25,19 +25,19 @@ main {
 }
 
 .card_grid {
-  width: 300px;
-  height: 400px;
+  width: 55vh;
+  /* height: 50vh; */
 }
 
 .row {
   display: flex;
-  height: 80px;
+  height: 13.75vh;
 }
 
 .card {
   background-image: url(./images/cardback.jpg);
   background-size: cover;
-  width: 80px;
+  width: 13.75vh;
   border: 1px solid rgba(211, 211, 211, 0.52);
 }
 
