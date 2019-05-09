@@ -2,4 +2,82 @@ p {
     background-color: black;
     color: white;
     width: 10%;
+    
+@font-face {
+  font-family: 'Game of Thrones';
+  src: url('./font/Game\ of\ Thrones.ttf');
+}
+
+body {
+  background-color: #D5D0C4;
+  background-size: cover;
+  font-family: 'Game of Thrones';
+  margin: 0;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.btn_container{
+  display:flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  width: 55vh;
+}
+
+.start_btn:hover, .reset_btn:hover {
+  cursor: pointer;
+}
+
+.card_grid {
+  width: 55vh;
+  /* height: 50vh; */
+}
+
+.row {
+  display: flex;
+  height: 13.75vh;
+}
+
+.card {
+  background-image: url(./images/cardback.jpg);
+  background-size: cover;
+  width: 13.75vh;
+  border: 1px solid rgba(211, 211, 211, 0.52);
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 768px) {
+  body {
+    background-image: url(https://images5.alphacoders.com/637/thumb-1920-637668.jpg);
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  .btn_container{
+    width: 90vh;
+  }
+
+  .card_grid{
+    width: 90vh;
+    height: 90vh;
+  }
+
+  .row {
+    height: 18vh;
+  }
+
+  .card {
+    width: 18vh;
+  }
+
 }
