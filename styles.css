@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Game of Thrones';
-  src: url('/Game\ of\ Thrones.ttf');
+  src: url('./font/Game\ of\ Thrones.ttf');
 }
 
 body {
@@ -16,7 +16,7 @@ main {
 }
 
 section.card_grid {
-  background-image: url(bran.jpg);
+  background-image: url(./images/bran.jpg);
   background-size: cover;
 }
 
@@ -24,7 +24,7 @@ section.card_grid {
   display: flex;
 }
 .card {
-  background-image: url(cardback.jpg);
+  background-image: url(./images/cardback.jpg);
   background-size: cover;
   height: 150px;
   width: 150px;
