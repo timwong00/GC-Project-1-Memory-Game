@@ -73,6 +73,10 @@ grid.addEventListener("click", function (event) {
     }
 });
 
+// function startTimer() {
+
+// }
+
 // // Start Game Button vvvvv
 
 // const main = document.querySelector("main");
