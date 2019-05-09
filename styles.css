@@ -1,8 +1,3 @@
-p {
-    background-color: black;
-    color: white;
-    width: 10%;
-    
 @font-face {
   font-family: 'Game of Thrones';
   src: url('./font/Game\ of\ Thrones.ttf');

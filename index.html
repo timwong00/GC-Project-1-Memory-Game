@@ -12,20 +12,19 @@
 
 <body>
     <main>
-        <p>Game will end in <span class="js-timeout">2:00</span></p>
+
 
         <section class="title">
             <h1>Game of Memory</h1>
         </section>
         <section class="btn_container">
-            <button id="js-startTimer" class="start_btn">Start Game</button>
-            <button id="js-resetTimer" class="reset_btn">Reset</button>
             <!-- <button class="start_btn">Start Game</button> -->
-            <img src="./images/sword.png" alt="" class="start_btn">
+            <img id="js-resetTimer" src="./images/sword.png" alt="" class="start_btn">
+            <span class="js-timeout">2:00</span>
             <!-- <button class="reset_btn">Reset</button> -->
-            <img src="./images/shield.png" alt="" class="reset_btn">
+            <img id="js-startTimer" src="./images/shield.png" alt="" class="reset_btn">
         </section>
-        <section class="card_grid">
+        <section id="game" class="card_grid">
             <!-- <img class="bran_img" src="./images/bran.jpg" alt="bran"> -->
         </section>
 
