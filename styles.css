@@ -37,13 +37,26 @@ div {
   margin: 0;
 }
 
-.card {
+.front {
   background-image: url(./images/cardback.jpg);
+  background-size: cover;
+}
+.front,
+.back,
+.card {
+  /* background-image: url(./images/cardback.jpg); */
   background-size: cover;
   width: 13.75vh;
   height: 13.75vh;
   border: 1px solid rgba(211, 211, 211, 0.52);
   box-sizing: border-box;
+  position: relative;
+  transition: all 0.5s linear;
+  transform-style: preserve-3d;
+  /* background-color: #fff;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center; */
 }
 
 
@@ -65,21 +78,21 @@ div {
     width: 100vh;
   }
 
-  .front {
+  /* .front {
   background-image: url(./images/cardback.jpg);
   background-size: cover;
-  }
+  } */
 
   .card {
   width: 20%;
   height: 17.5vh;
-  position: relative;
+  /* position: relative;
   transition: all 0.5s linear;
   transform-style: preserve-3d;
   background-color: #fff;
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center center; */
   }
 
 .back {
@@ -88,9 +101,10 @@ div {
     background-position: center;
     transform: rotateY(180deg);
   }
+  
   .back,
   .front {
-    position: absolute;
+    /* position: absolute; */
     backface-visibility: hidden;
   }
 
