@@ -64,12 +64,12 @@ gameGrid.forEach(item => {                       //for each image in our array
     card.appendChild(front);
     card.appendChild(back);
 });
-let userPicks = 0;
+let userPicks = 0;  //declares a variable to try user choices, sets it at 0
 grid.addEventListener("click", function(event) {
     let clicked = event.target;
-    if (userPicks < 2) {
-        userPicks++;
-        clicked.parentNode.classList.add("clickedOn");
-        console.log(userPicks);
+    if (userPicks < 2) {  //makes sure user only gets 2 picks
+        userPicks++;       //increases user picks
+        clicked.parentNode.classList.add("clickedOn");  //addes classlist clickedon to parent of div clicked on
+        console.log(userPicks);  //not needed, just tracking functionality
     }
   });
