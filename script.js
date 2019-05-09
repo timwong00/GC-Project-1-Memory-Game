@@ -48,8 +48,7 @@ let gameGrid = cardArray.concat(cardArray);
 gameGrid.sort(() => 0.5 - Math.random());
 
 const grid = document.getElementById("game");  //accesses the section in HTML with ID game
-//adds the class grid to our sectiom element
-grid.classList.add("grid");
+
 gameGrid.forEach(item => {                       //for each image in our array
     const card = document.createElement("div");  //we create a div with a class card
     card.classList.add("card");
