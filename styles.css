@@ -2,13 +2,48 @@
 
 
 
-.row {
+.grid {
+  max-width: 50%;
+  margin: 0 auto;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.front {
+  background-image: url(./images/cardback.jpg);
+  background-size: cover;
 }
 .card {
-  background-image: url(cardback.jpg);
-  background-size: cover;
+  position: relative;
+  transition: all 0.5s linear;
+  transform-style: preserve-3d;
+  margin: 5px;
+  background-color: #fff;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  cursor: pointer;
+}
+
+.card,
+.back,
+.front {
   height: 150px;
   width: 150px;
-  border: 1px solid rgba(211, 211, 211, 0.52);
+}
+.back {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: rotateY(180deg);
+}
+.back,
+.front {
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.clickedOn {
+  /* border: 4px solid blue; */
+  transform: rotateY(180deg);
 }
