@@ -7,6 +7,7 @@ body {
   background-color: #D5D0C4;
   background-size: cover;
   font-family: 'Game of Thrones';
+  margin: 0;
 }
 
 main {
@@ -17,7 +18,10 @@ main {
 }
 
 .btn_container{
+  display:flex;
+  justify-content: space-between;
   margin-bottom: 15px;
+  width: 55vh;
 }
 
 .start_btn:hover, .reset_btn:hover {
@@ -50,17 +54,25 @@ main {
     background-image: url(https://images5.alphacoders.com/637/thumb-1920-637668.jpg);
   }
 
+  h1 {
+    font-size: 40px;
+  }
+
+  .btn_container{
+    width: 90vh;
+  }
+
   .card_grid{
-    width: 100vh;
-    height: 100vh;
+    width: 90vh;
+    height: 90vh;
   }
 
   .row {
-    height: 20vh;
+    height: 18vh;
   }
 
   .card {
-    width: 20vh;
+    width: 18vh;
   }
 
 }
