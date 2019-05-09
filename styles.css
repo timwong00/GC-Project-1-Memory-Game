@@ -15,6 +15,10 @@ main {
   flex-direction: column;
 }
 
+.start_btn:hover, .reset_btn:hover {
+  cursor: pointer;
+}
+
 section.card_grid {
   background-image: url(./images/bran.jpg);
   background-size: cover;
@@ -26,6 +30,7 @@ section.card_grid {
 .card {
   background-image: url(./images/cardback.jpg);
   background-size: cover;
+  cursor: pointer;
   height: 150px;
   width: 150px;
   border: 1px solid rgba(211, 211, 211, 0.52);
