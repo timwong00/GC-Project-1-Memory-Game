@@ -71,6 +71,28 @@ main {
 div.matched {
   background-image: none !important;  /*removes card on match */
 }
+/* below is for Bran popup at game over */
+.overlay {
+  position: fixed;
+  top: 20%;
+  transition: opacity 500ms;
+  visibility: hidden;
+}
+.overlay:target {
+  visibility: visible;
+}
+.popup {
+  width: 90%;
+  position: relative;
+}
+.popup .close {
+  position: absolute;
+  right: 5%;
+}
+.show {
+  visibility: visible !important;
+  opacity: 100 !important;
+}
 
 @media only screen and (min-width: 768px) {
   h1 {

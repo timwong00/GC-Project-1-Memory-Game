@@ -67,6 +67,7 @@ let card1 = null;
 let card2 = null;
 let previousTarget = null;
 let delay = 1200;  //delay before flipping cards or removing
+let endGame = [];
 let winImage = document.getElementById("bran_popup");
 
 grid.addEventListener("click", function (event) {
@@ -90,12 +91,15 @@ grid.addEventListener("click", function (event) {
             clicked.parentNode.classList.add("clickedOn");
         } if (userPicks === 2 && card1 !== card2) {  //tests that the user has picked 2 cards and they don't match
             setTimeout(resetPicks, delay);    //calls reset picks function and calls a delay before flipping back
-        } if (userPicks === 2 && card1 === card2){ // tests if user picks 2 card and they match
+        } if (userPicks === 2 && card1 === card2) { // tests if user picks 2 card and they match
             setTimeout(matchedPicks, delay);
-            return;
+            // return;
         }
-        previousTarget = clicked;
     }
+    if (endGame.length === 20) {
+        gameOver();
+    }
+
 });
 
 const resetPicks = () => {
@@ -115,14 +119,19 @@ const matchedPicks = () => {
     choices.forEach(card => {
         card.classList.remove("choice");
         card.classList.add("matched");
+        endGame.push(choices);
     })
     card1 = null;
     card2 = null;
     userPicks = 0;
     previousTarget = null;
- }
+}
+//function that calls game over image overlay
+function gameOver() {
+    winImage.classList.add("show");
+}
 
-// add a function to handle matching and removing cards
+//to do:
 //add timer 
 //add reset function
 
