@@ -102,6 +102,7 @@ const resetPicks = () => {
     let choices = document.querySelectorAll(".choice");
     choices.forEach(card => {
         card.classList.remove("choice");
+        card.classList.add("unmatched");
     })
 }
 //need to continue to fix user choices 

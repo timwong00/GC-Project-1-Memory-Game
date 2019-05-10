@@ -69,6 +69,9 @@ main {
   position: absolute;
   backface-visibility: hidden;
 }
+.card.unmatched {
+  transform: rotateY(180deg);
+}
 /* commented out - added this code in js
 .clickedOn {
   transform: rotateY(180deg);
