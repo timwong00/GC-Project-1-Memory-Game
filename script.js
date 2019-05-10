@@ -66,7 +66,7 @@ let userPicks = 0;  //declares a variable to try user choices, sets it at 0
 let card1 = null;
 let card2 = null;
 let delay = 1200;  //delay before flipping cards or removing
-
+let winImage = document.getElementById("bran_popup");
 
 grid.addEventListener("click", function (event) {
     console.log(event);
@@ -89,6 +89,7 @@ grid.addEventListener("click", function (event) {
             clicked.parentNode.classList.add("clickedOn");
         } if (userPicks === 2 && card1 !== card2) {  //tests that the user has picked 2 cards and they don't match
             setTimeout(resetPicks, delay);    //calls reset picks function and calls a delay before flipping back
+            setTimeout(gameOver, delay)
         }
     }
 });
@@ -107,3 +108,7 @@ const resetPicks = () => {
 // add a function to handle matching and removing cards
 //add timer 
 //add reset function
+
+function gameOver() {
+    winImage.classList.add("show");
+}
