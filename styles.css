@@ -10,31 +10,46 @@ body {
   padding: 0;
 }
 main {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .btn_container{
+  display:-webkit-box;
+  display:-ms-flexbox;
   display:flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin-bottom: 15px;
-  width: 55vh;
+  width: 40vh;
 }
 
 .start_btn:hover, .reset_btn:hover {
   cursor: pointer;
 }
-
-
-
 .card_grid {
-  max-width: 50%;
+  max-width: 80%;
   margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: inherit;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: inherit;
+      -ms-flex-pack: inherit;
+          justify-content: inherit;
 }
 .front {
   background-image: url(./images/cardback.jpg);
@@ -42,9 +57,10 @@ main {
 }
 .card {
   position: relative;
+  -webkit-transition: all 0.5s linear;
   transition: all 0.5s linear;
-  transform-style: preserve-3d;
-  /* background-color: #fff; */
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -54,26 +70,48 @@ main {
 .card,
 .back,
 .front {
-  height: 150px;
-  width: 150px;
+  height: 80px;
+  width: 80px;
 }
 .back {
   background-color: transparent;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
 }
 .back,
 .front {
   position: absolute;
-  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
 }
 .card.unmatched {
   -webkit-backface-visibility: visible !important;
 	backface-visibility: visible !important;
 }
-/* commented out - added this code in js */
 .clickedOn {
-  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+@media only screen and (min-width: 768px) {
+  h1 {
+    font-size: 40px;
+  }
+
+  .btn_container{
+    width: 90vh;
+  }
+
+  .card_grid{
+    width: 100vh;
+    }
+  .card,
+.back,
+.front {
+  height: 150px;
+  width: 150px;
+}
 }

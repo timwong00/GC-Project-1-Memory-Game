@@ -100,13 +100,13 @@ const resetPicks = () => {
     card2 = null;
     userPicks = 0;
 
-    let choices = document.querySelectorAll(".choice");
-    choices.forEach(card => {
+    let choices = document.querySelectorAll(".choice");  //makes array of choices
+    choices.forEach(card => {  //calls array and for each item does below actions
         card.classList.remove("choice", "clickedOn");  //removes the choice class add when card was clicked
         card.classList.add("unmatched"); //testing if this class helps style the flip back
     })
 }
-//need to continue to fix user choices 
-//need to make sure if user clicks on same card it doesn't count as a choice
-//make it so it flips cards back if they are wrong
+
 // add a function to handle matching and removing cards
+//add timer 
+//add reset function
