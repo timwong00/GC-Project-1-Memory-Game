@@ -3,7 +3,8 @@
 let second = 0, minute = 0;
 let timer = document.querySelector(".timer");
 let interval;
-// variable declarations for timers
+let audio = new Audio("Game of Thrones.mp3");
+// variable declarations for timers and audio
 //array containing all the card data and images
 const cardArray = [
     {
@@ -68,63 +69,49 @@ gameGrid.forEach(item => {                       //for each image in our array
     card.appendChild(front);
     card.appendChild(back);
 });
-let userPicks = 0;
-grid.addEventListener("click", function (event) {
-    let clicked = event.target;
-    if (userPicks < 2) {
-        userPicks++;
-        clicked.parentNode.classList.add("clickedOn");
-        console.log(userPicks);
-    }
-});
 
+function startGame() {
+    let userPicks = 0;
+    grid.addEventListener("click", function (event) {
+        let clicked = event.target;
+        if (userPicks < 2) {
+            userPicks++;
+            clicked.parentNode.classList.add("clickedOn");
+            console.log(userPicks);
+        }
+    });
+}
 
 function startTimer() {
-    interval = setInterval( function() {
-        timer.innerHTML = minute+" mins "+second+" secs";
+    interval = setInterval(function () {
+        timer.innerHTML = minute + " mins " + second + " secs";
         second++
         if (second == 60) {
             minute++;
             second = 0;
-        } 
+        }
         if (minute == 60) {
             hour++;
             minute = 0;
         }
-    },1000);
+    }, 1000);
 };
 
 const main = document.querySelector("main");
 
-main.addEventListener("click", function(event) {
-    if(event.target.classList.contains("start_btn")) {
+main.addEventListener("click", function (event) {
+    if (event.target.classList.contains("start_btn")) {
         startTimer();
+        audio.play();
+        startGame();
     } else if (event.target.classList.contains("reset_btn")) {
         let timer = document.querySelector(".timer");
         timer.innerHTML = "0 mins 0 secs";
         minute = 0;
         second = 0;
         clearInterval(interval);
+        audio.pause();
+        audio.currentTime = 0;
+        resetGame();
     }
 });
-
-
-// function startTimer() {
-
-// }
-
-// // Start Game Button vvvvv
-
-// const main = document.querySelector("main");
-
-// main.addEventListener("click", function (event) {
-//     if (event.target.classList.contains("start_btn")) {
-//         startGame();
-//     } else if (event.target.classList.contains("reset_btn")) {
-//         resetGame();
-//     }
-// });
-
-// function startGame() {
-
-// }
