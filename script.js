@@ -8,13 +8,6 @@ main.addEventListener("click", function (event) {
     if (event.target.classList.contains("start_btn")) {
         startGame();
     } else if (event.target.classList.contains("reset_btn")) {
-        let timer = document.querySelector(".timer");
-        timer.innerHTML = "0 mins 0 secs";
-        minute = 0;
-        second = 0;
-        clearInterval(interval);
-        audio.pause();
-        audio.currentTime = 0;
         resetGame();
     }
 });
@@ -163,6 +156,7 @@ const matchedPicks = () => {
 }
 
 function startGame() {
+    document.getElementsByClassName("cover")[0].style.display = "none";
     audio.play();
     startTimer();
     let userPicks = 0;
@@ -174,6 +168,18 @@ function startGame() {
             console.log(userPicks);
         }
     });
+
 }
 
+function resetGame() {
+    document.getElementsByClassName("cover")[0].style.display = "block";
+    gameGrid.sort(() => 0.5 - Math.random());
+    let timer = document.querySelector(".timer");
+    timer.innerHTML = "0 mins 0 secs";
+    minute = 0;
+    second = 0;
+    clearInterval(interval);
+    audio.pause();
+    audio.currentTime = 0;
+};
 
