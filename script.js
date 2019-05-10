@@ -89,7 +89,6 @@ grid.addEventListener("click", function (event) {
             clicked.parentNode.classList.add("clickedOn");
         } if (userPicks === 2 && card1 !== card2) {  //tests that the user has picked 2 cards and they don't match
             setTimeout(resetPicks, delay);    //calls reset picks function and calls a delay before flipping back
-            setTimeout(gameOver, delay)
         }
     }
 });
