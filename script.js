@@ -88,21 +88,21 @@ grid.addEventListener("click", function (event) {
             console.log(card2);
             clicked.parentNode.classList.add("choice");
             clicked.parentNode.style.transform = "rotateY(180deg)";
-        } if (userPicks === 2 && card1 !== card2 ) {
-            resetPicks();
+        } if (userPicks === 2 && card1 !== card2 ) {  //tests that the user has picked 2 cards and they don't match
+            resetPicks();    //calls reset picks function
         }
     }
 });
 
 const resetPicks = () => {
-    card1 = null;
+    card1 = null;  //resets card1 and card2 choice and userPicks
     card2 = null;
     userPicks = 0;
 
     let choices = document.querySelectorAll(".choice");
     choices.forEach(card => {
-        card.classList.remove("choice");
-        card.classList.add("unmatched");
+        card.classList.remove("choice");  //removes the choice class add when card was clicked
+        card.classList.add("unmatched"); //testing if this class helps style the flip back
     })
 }
 //need to continue to fix user choices 
