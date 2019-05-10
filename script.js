@@ -65,48 +65,39 @@ gameGrid.forEach(item => {                       //for each image in our array
 let userPicks = 0;  //declares a variable to try user choices, sets it at 0
 let card1 = null;
 let card2 = null;
-let previousTarget = null;
 let delay = 1200;  //delay before flipping cards or removing
-let endGame = [];
+let endGame = []; //array to keep track of matches for endGame function
 let winImage = document.getElementById("bran_popup");
-
+gameOver();
 grid.addEventListener("click", function (event) {
-    console.log(event);
     let clicked = event.target;
     if (clicked.parentNode.classList.contains("choice") || clicked === clicked.parentNode.classList.contains("clickedOn") || clicked === clicked.nextSibling.classList.contains("matched")) {  //add class for choice with click, this line makes it so if they click the same card it doesn't count as a choice
         return;
     }
     if (userPicks < 2) {  //makes sure user only gets 2 picks
-        userPicks++;       //increases user picks
-        console.log(userPicks);
+        userPicks++; //increases user picks            
         if (userPicks === 1) {
             card1 = clicked.parentNode.dataset.name;  //pulls name of card for matching purposes
-            console.log(card1);  //just using to check funcality of above code
             clicked.nextSibling.classList.add("choice");
             clicked.parentNode.classList.add("clickedOn");  //added click style here rather than css
         } if (userPicks === 2 && clicked !== card1) {
             card2 = clicked.parentNode.dataset.name;
-            console.log(card2);
             clicked.nextSibling.classList.add("choice");
             clicked.parentNode.classList.add("clickedOn");
         } if (userPicks === 2 && card1 !== card2) {  //tests that the user has picked 2 cards and they don't match
             setTimeout(resetPicks, delay);    //calls reset picks function and calls a delay before flipping back
-        } if (userPicks === 2 && card1 === card2) { // tests if user picks 2 card and they match
+        } else if (userPicks === 2 && card1 === card2) { // tests if user picks 2 card and they match
             setTimeout(matchedPicks, delay);
             // return;
         }
     }
-    if (endGame.length === 20) {
-        gameOver();
-    }
-
 });
+
 
 const resetPicks = () => {
     card1 = null;  //resets card1 and card2 choice and userPicks
     card2 = null;
     userPicks = 0;
-    previousTarget = null;
 
     let choices = document.querySelectorAll(".choice");  //makes array of choices
     choices.forEach(card => {  //calls array and for each item does below actions
@@ -124,11 +115,12 @@ const matchedPicks = () => {
     card1 = null;
     card2 = null;
     userPicks = 0;
-    previousTarget = null;
 }
 //function that calls game over image overlay
 function gameOver() {
-    winImage.classList.add("show");
+    if (endGame.length === 20) {
+        winImage.classList.add("show");
+    }
 }
 
 //to do:
