@@ -10,30 +10,17 @@ body {
   padding: 0;
 }
 main {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .btn_container{
-  display:-webkit-box;
-  display:-ms-flexbox;
   display:flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   margin-bottom: 15px;
-  width: 40vh;
+  width: 80vw;
 }
 
 .start_btn:hover, .reset_btn:hover {
@@ -42,14 +29,9 @@ main {
 .card_grid {
   max-width: 80%;
   margin: 0 auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: inherit;
-      -ms-flex-pack: inherit;
-          justify-content: inherit;
+  flex-wrap: wrap;
+  justify-content: inherit;
 }
 .front {
   background-image: url(./images/cardback.jpg);
@@ -57,10 +39,8 @@ main {
 }
 .card {
   position: relative;
-  -webkit-transition: all 0.5s linear;
   transition: all 0.5s linear;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  transform-style: preserve-3d;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -78,22 +58,19 @@ main {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  -webkit-transform: rotateY(180deg);
-          transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 .back,
 .front {
   position: absolute;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 .card.unmatched {
   -webkit-backface-visibility: visible !important;
 	backface-visibility: visible !important;
 }
 .clickedOn {
-  -webkit-transform: rotateY(180deg);
-          transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 @media only screen and (min-width: 768px) {
@@ -102,7 +79,7 @@ main {
   }
 
   .btn_container{
-    width: 90vh;
+    width: 100vh;
   }
 
   .card_grid{
