@@ -1,4 +1,5 @@
 "use strict";
+let audio = new Audio("Card-flip-sound-effect.mp3");
 //array containing all the card data and images
 const cardArray = [
     {
@@ -78,23 +79,28 @@ grid.addEventListener("click", function (event) {
         userPicks++;       //increases user picks
         console.log(userPicks);
         if (userPicks === 1) {
+            audio.play(); // plays sound
             card1 = clicked.parentNode.dataset.name;  //pulls name of card for matching purposes
             console.log(card1);  //just using to check funcality of above code
             clicked.nextSibling.classList.add("choice");
             clicked.parentNode.classList.add("clickedOn");  //added click style here rather than css
         } if (userPicks === 2 && clicked !== card1) {
+            audio.play(); // plays sound
             card2 = clicked.parentNode.dataset.name;
             console.log(card2);
             clicked.nextSibling.classList.add("choice");
             clicked.parentNode.classList.add("clickedOn");
         } if (userPicks === 2 && card1 !== card2) {  //tests that the user has picked 2 cards and they don't match
+            audio.play(); // plays sound
             setTimeout(resetPicks, delay);    //calls reset picks function and calls a delay before flipping back
         } if (userPicks === 2 && card1 === card2){ // tests if user picks 2 card and they match
+            audio.play(); // plays sound
             setTimeout(matchedPicks, delay);
             return;
         }
     }
 });
+
 
 const resetPicks = () => {
     card1 = null;  //resets card1 and card2 choice and userPicks
