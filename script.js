@@ -67,6 +67,7 @@ gameGrid.forEach(item => {                       //for each image in our array
 let userPicks = 0;  //declares a variable to try user choices, sets it at 0
 let card1 = null;
 let card2 = null;
+let delay = 1200;  //delay before flipping cards or removing
 
 
 grid.addEventListener("click", function (event) {
@@ -82,14 +83,14 @@ grid.addEventListener("click", function (event) {
             card1 = clicked.parentNode.dataset.name;  //pulls name of card for matching purposes
             console.log(card1);  //just using to check funcality of above code
             clicked.parentNode.classList.add("choice"); 
-            clicked.parentNode.style.transform = "rotateY(180deg)";  //added click style here rather than css
+            clicked.parentNode.classList.add("clickedOn");  //added click style here rather than css
         } if (userPicks === 2 && clicked !== card1) {
             card2 = clicked.parentNode.dataset.name;
             console.log(card2);
             clicked.parentNode.classList.add("choice");
-            clicked.parentNode.style.transform = "rotateY(180deg)";
+            clicked.parentNode.classList.add("clickedOn");
         } if (userPicks === 2 && card1 !== card2 ) {  //tests that the user has picked 2 cards and they don't match
-            resetPicks();    //calls reset picks function
+            setTimeout(resetPicks, delay);    //calls reset picks function and calls a delay before flipping back
         }
     }
 });
@@ -101,7 +102,7 @@ const resetPicks = () => {
 
     let choices = document.querySelectorAll(".choice");
     choices.forEach(card => {
-        card.classList.remove("choice");  //removes the choice class add when card was clicked
+        card.classList.remove("choice", "clickedOn");  //removes the choice class add when card was clicked
         card.classList.add("unmatched"); //testing if this class helps style the flip back
     })
 }

@@ -70,9 +70,10 @@ main {
   backface-visibility: hidden;
 }
 .card.unmatched {
-  transform: rotateY(180deg);
+  -webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
 }
-/* commented out - added this code in js
+/* commented out - added this code in js */
 .clickedOn {
   transform: rotateY(180deg);
-} */
+}
