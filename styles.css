@@ -2,6 +2,7 @@
   font-family: 'Game of Thrones';
   src: url('./font/Game\ of\ Thrones.ttf');
 }
+
 body {
   background-color: #D5D0C4;
   background-size: cover;
@@ -9,6 +10,7 @@ body {
   margin: 0;
   padding: 0;
 }
+
 main {
   display: flex;
   justify-content: center;
@@ -16,32 +18,39 @@ main {
   flex-direction: column;
 }
 
-.btn_container{
+.btn_container {
   display:flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 15px;
-  width: 80vw;
+  width: 55vh;
 }
 
-.start_btn:hover, .reset_btn:hover {
+.timer {
+  margin: 0;
+  font-size: 20px;
+  font-family: 'Game of Thrones';
+  /* font changed words were much bigger than numbers */
+}
+
+.start_btn:hover, .reset_btn:hover, .card:hover {
   cursor: pointer;
 }
+
 .card_grid {
-  max-width: 80%;
-  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: inherit;
+  width: 55vh;
 }
 
-.front {
+/* .front {
   background-image: url(./images/cardback.jpg);
   background-size: cover;
-}
+} */
+
 .front,
 .back,
 .card {
-  /* background-image: url(./images/cardback.jpg); */
   background-size: cover;
   width: 13.75vh;
   height: 13.75vh;
@@ -50,53 +59,55 @@ main {
   position: relative;
   transition: all 0.5s linear;
   transform-style: preserve-3d;
-  /* background-color: #fff;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center; */
 }
 
-.card,
-.back,
-.front {
-  height: 80px;
-  width: 80px;
-}
 .back {
-  background-color: transparent;
-  background-size: contain;
-  background-repeat: no-repeat;
+  /* background-color: transparent; */
+  /* background-size: contain; */
+  /* background-repeat: no-repeat; */
   background-position: center;
   transform: rotateY(180deg);
 }
+
 .back,
 .front {
   position: absolute;
   backface-visibility: hidden;
 }
+
 .clickedOn {
   transform: rotateY(180deg);
 }
+
 div.matched {
   background-image: none !important;  /*removes card on match */
 }
 
 @media only screen and (min-width: 768px) {
+  body{
+    background-image: url("");
+  }
+
   h1 {
+    margin: 18px;
     font-size: 40px;
   }
 
   .btn_container{
     width: 100vh;
   }
-
+  .start_btn, .reset_btn {
+    width: 6%;
+    height: 6%;
+  }
   .card_grid{
     width: 100vh;
   }
+
   .card,
- .back,
- .front {
-  height: 150px;
-  width: 150px;
+  .front,
+  .back {
+    width: 20vh;
+    height: 20vh;
  }
 }

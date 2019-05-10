@@ -1,4 +1,42 @@
 "use strict";
+
+let audio = new Audio("Game of Thrones.mp3");
+
+const main = document.querySelector("main");
+
+main.addEventListener("click", function (event) {
+    if (event.target.classList.contains("start_btn")) {
+        startGame();
+    } else if (event.target.classList.contains("reset_btn")) {
+        let timer = document.querySelector(".timer");
+        timer.innerHTML = "0 mins 0 secs";
+        minute = 0;
+        second = 0;
+        clearInterval(interval);
+        audio.pause();
+        audio.currentTime = 0;
+        resetGame();
+    }
+});
+
+function startTimer() {
+    let second = 0, minute = 0;
+    let timer = document.querySelector(".timer");
+    let interval = setInterval(function () {
+        timer.innerText = minute + " mins " + second + " secs";
+        second++
+        if (second == 60) {
+            minute++;
+            second = 0;
+        }
+        if (minute == 60) {
+            hour++;
+            minute = 0;
+        }
+    }, 1000);
+};
+
+// variable declarations for timers and audio
 //array containing all the card data and images
 const cardArray = [
     {
@@ -62,6 +100,7 @@ gameGrid.forEach(item => {                       //for each image in our array
     card.appendChild(front);
     card.appendChild(back);
 });
+
 let userPicks = 0;  //declares a variable to try user choices, sets it at 0
 let card1 = null;
 let card2 = null;
@@ -110,6 +149,7 @@ const resetPicks = () => {
         card.parentNode.classList.remove("clickedOn");
     })
 }
+
 const matchedPicks = () => {
     let choices = document.querySelectorAll(".choice");
     choices.forEach(card => {
@@ -122,7 +162,18 @@ const matchedPicks = () => {
     previousTarget = null;
 }
 
-// add a function to handle matching and removing cards
-//add timer 
-//add reset function
+function startGame() {
+    audio.play();
+    startTimer();
+    let userPicks = 0;
+    grid.addEventListener("click", function (event) {
+        let clicked = event.target;
+        if (userPicks < 2) {
+            userPicks++;
+            clicked.parentNode.classList.add("clickedOn");
+            console.log(userPicks);
+        }
+    });
+}
+
 
