@@ -44,8 +44,8 @@ const cardArray = [
 ]
 
 
-let gameGrid = cardArray.concat(cardArray);
-gameGrid.sort(() => 0.5 - Math.random());
+let gameGrid = [...cardArray, ...cardArray]; //uses spread operator to double the cardarray into new array called gamegrid
+gameGrid.sort(() => 0.5 - Math.random());   //randomizs the gamegrid array using
 
 const grid = document.getElementById("game");  //accesses the section in HTML with ID game
 //adds the class grid to our sectiom element
@@ -76,10 +76,14 @@ grid.addEventListener("click", function (event) {
         if (userPicks === 1) {
             card1 = clicked.dataset.name;
             console.log(card1);
-            clicked.classList.add("clickedOn");
+            clicked.parentNode.style.transform = "rotateY(180deg)";  //added click style here rather than css
         } if (userPicks === 2) {
             card2 = clicked.dataset.name;
-            clicked.classList.add("clickedOn");
+            clicked.parentNode.style.transform = "rotateY(180deg)";
         }
     }
 });
+//need to continue to fix user choices 
+//need to make sure if user clicks on same card it doesn't count as a choice
+//make it so it flips cards back if they are wrong
+// add a function to handle matching and removing cards
