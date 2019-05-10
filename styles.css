@@ -108,8 +108,8 @@ div {
     backface-visibility: hidden;
   }
 
-  .clickedOn {
-    /* border: 4px solid blue; */
+  /* .clickedOn {
+    border: 4px solid blue;
     transform: rotateY(180deg);
-  }
+  } */
 }

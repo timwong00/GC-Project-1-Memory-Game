@@ -68,6 +68,7 @@ grid.addEventListener("click", function (event) {
     let clicked = event.target;
     if (userPicks < 2) {
         userPicks++;
+        clicked.style.transform = "rotateY(180deg)";
         clicked.parentNode.classList.add("clickedOn");
         console.log(userPicks);
     }
