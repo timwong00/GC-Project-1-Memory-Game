@@ -59,6 +59,13 @@ div {
   background-position: center center; */
 }
 
+.timer {
+  font-size: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  /* font changed words were much bigger than numbers */
+}
+
+
 
 @media only screen and (min-width: 768px) {
   body {

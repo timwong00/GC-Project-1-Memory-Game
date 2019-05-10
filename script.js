@@ -1,4 +1,9 @@
 "use strict";
+
+let second = 0, minute = 0;
+let timer = document.querySelector(".timer");
+let interval;
+// variable declarations for timers
 //array containing all the card data and images
 const cardArray = [
     {
@@ -72,6 +77,37 @@ grid.addEventListener("click", function (event) {
         console.log(userPicks);
     }
 });
+
+
+function startTimer() {
+    interval = setInterval( function() {
+        timer.innerHTML = minute+" mins "+second+" secs";
+        second++
+        if (second == 60) {
+            minute++;
+            second = 0;
+        } 
+        if (minute == 60) {
+            hour++;
+            minute = 0;
+        }
+    },1000);
+};
+
+const main = document.querySelector("main");
+
+main.addEventListener("click", function(event) {
+    if(event.target.classList.contains("start_btn")) {
+        startTimer();
+    } else if (event.target.classList.contains("reset_btn")) {
+        let timer = document.querySelector(".timer");
+        timer.innerHTML = "0 mins 0 secs";
+        minute = 0;
+        second = 0;
+        clearInterval(interval);
+    }
+});
+
 
 // function startTimer() {
 
