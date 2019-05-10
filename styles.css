@@ -68,6 +68,9 @@ main {
 .clickedOn {
   transform: rotateY(180deg);
 }
+div.matched {
+  background-image: none !important;  /*removes card on match */
+}
 /* below is for Bran popup at game over */
 .overlay {
   position: fixed;

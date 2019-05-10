@@ -80,15 +80,18 @@ grid.addEventListener("click", function (event) {
         if (userPicks === 1) {
             card1 = clicked.parentNode.dataset.name;  //pulls name of card for matching purposes
             console.log(card1);  //just using to check funcality of above code
-            clicked.parentNode.classList.add("choice");
+            clicked.nextSibling.classList.add("choice");
             clicked.parentNode.classList.add("clickedOn");  //added click style here rather than css
         } if (userPicks === 2 && clicked !== card1) {
             card2 = clicked.parentNode.dataset.name;
             console.log(card2);
-            clicked.parentNode.classList.add("choice");
+            clicked.nextSibling.classList.add("choice");
             clicked.parentNode.classList.add("clickedOn");
         } if (userPicks === 2 && card1 !== card2) {  //tests that the user has picked 2 cards and they don't match
             setTimeout(resetPicks, delay);    //calls reset picks function and calls a delay before flipping back
+        } if (userPicks === 2 && card1 === card2){ // tests if user picks 2 card and they match
+            setTimeout(matchedPicks, delay);
+            return;
         }
     }
 });
@@ -100,9 +103,20 @@ const resetPicks = () => {
 
     let choices = document.querySelectorAll(".choice");  //makes array of choices
     choices.forEach(card => {  //calls array and for each item does below actions
-        card.classList.remove("choice", "clickedOn");  //removes the choice class add when card was clicked
+        card.classList.remove("choice");  //removes the choice class add when card was clicked
+        card.parentNode.classList.remove("clickedOn");
     })
 }
+const matchedPicks = () => {
+    let choices = document.querySelectorAll(".choice");
+    choices.forEach(card => {
+        card.classList.remove("choice");
+        card.classList.add("matched");
+    })
+    card1 = null;
+    card2 = null;
+    userPicks = 0;
+ }
 
 // add a function to handle matching and removing cards
 //add timer 
