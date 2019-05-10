@@ -48,8 +48,6 @@ let gameGrid = [...cardArray, ...cardArray]; //uses spread operator to double th
 gameGrid.sort(() => 0.5 - Math.random());   //randomizs the gamegrid array using
 
 const grid = document.getElementById("game");  //accesses the section in HTML with ID game
-//adds the class grid to our sectiom element
-// grid.classList.add("grid");
 gameGrid.forEach(item => {                       //for each image in our array
     const card = document.createElement("div");  //we create a div with a class card
     card.classList.add("card");
@@ -76,20 +74,20 @@ grid.addEventListener("click", function (event) {
     if (clicked.parentNode.classList.contains("choice")) {  //add class for choice with click, this line makes it so if they click the same card it doesn't count as a choice
         return;
     }
-    if (userPicks < 2 ) {  //makes sure user only gets 2 picks
+    if (userPicks < 2) {  //makes sure user only gets 2 picks
         userPicks++;       //increases user picks
         console.log(userPicks);
         if (userPicks === 1) {
             card1 = clicked.parentNode.dataset.name;  //pulls name of card for matching purposes
             console.log(card1);  //just using to check funcality of above code
-            clicked.parentNode.classList.add("choice"); 
+            clicked.parentNode.classList.add("choice");
             clicked.parentNode.classList.add("clickedOn");  //added click style here rather than css
         } if (userPicks === 2 && clicked !== card1) {
             card2 = clicked.parentNode.dataset.name;
             console.log(card2);
             clicked.parentNode.classList.add("choice");
             clicked.parentNode.classList.add("clickedOn");
-        } if (userPicks === 2 && card1 !== card2 ) {  //tests that the user has picked 2 cards and they don't match
+        } if (userPicks === 2 && card1 !== card2) {  //tests that the user has picked 2 cards and they don't match
             setTimeout(resetPicks, delay);    //calls reset picks function and calls a delay before flipping back
         }
     }
@@ -103,7 +101,6 @@ const resetPicks = () => {
     let choices = document.querySelectorAll(".choice");  //makes array of choices
     choices.forEach(card => {  //calls array and for each item does below actions
         card.classList.remove("choice", "clickedOn");  //removes the choice class add when card was clicked
-        card.classList.add("unmatched"); //testing if this class helps style the flip back
     })
 }
 

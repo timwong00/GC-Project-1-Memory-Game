@@ -65,10 +65,7 @@ main {
   position: absolute;
   backface-visibility: hidden;
 }
-.card.unmatched {
-  -webkit-backface-visibility: visible !important;
-	backface-visibility: visible !important;
-}
+
 .clickedOn {
   transform: rotateY(180deg);
 }
