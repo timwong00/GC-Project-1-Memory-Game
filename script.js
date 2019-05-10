@@ -66,13 +66,14 @@ gameGrid.forEach(item => {                       //for each image in our array
 let userPicks = 0;  //declares a variable to try user choices, sets it at 0
 let card1 = null;
 let card2 = null;
+let previousTarget = null;
 let delay = 1200;  //delay before flipping cards or removing
 let winImage = document.getElementById("bran_popup");
 
 grid.addEventListener("click", function (event) {
     console.log(event);
     let clicked = event.target;
-    if (clicked.parentNode.classList.contains("choice")) {  //add class for choice with click, this line makes it so if they click the same card it doesn't count as a choice
+    if (clicked.parentNode.classList.contains("choice") || clicked === clicked.parentNode.classList.contains("clickedOn") || clicked === clicked.nextSibling.classList.contains("matched")) {  //add class for choice with click, this line makes it so if they click the same card it doesn't count as a choice
         return;
     }
     if (userPicks < 2) {  //makes sure user only gets 2 picks
@@ -98,6 +99,7 @@ grid.addEventListener("click", function (event) {
             setTimeout(matchedPicks, delay);
             return;
         }
+        previousTarget = clicked;
     }
 });
 
@@ -106,6 +108,7 @@ const resetPicks = () => {
     card1 = null;  //resets card1 and card2 choice and userPicks
     card2 = null;
     userPicks = 0;
+    previousTarget = null;
 
     let choices = document.querySelectorAll(".choice");  //makes array of choices
     choices.forEach(card => {  //calls array and for each item does below actions
@@ -122,12 +125,10 @@ const matchedPicks = () => {
     card1 = null;
     card2 = null;
     userPicks = 0;
+    previousTarget = null;
  }
 
 // add a function to handle matching and removing cards
 //add timer 
 //add reset function
 
-function gameOver() {
-    winImage.classList.add("show");
-}
