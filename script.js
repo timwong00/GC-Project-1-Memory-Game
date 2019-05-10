@@ -68,21 +68,42 @@ let userPicks = 0;  //declares a variable to try user choices, sets it at 0
 let card1 = null;
 let card2 = null;
 
+
 grid.addEventListener("click", function (event) {
     console.log(event);
     let clicked = event.target;
-    if (userPicks < 2) {  //makes sure user only gets 2 picks
+    if (clicked.parentNode.classList.contains("choice")) {  //add class for choice with click, this line makes it so if they click the same card it doesn't count as a choice
+        return;
+    }
+    if (userPicks < 2 ) {  //makes sure user only gets 2 picks
         userPicks++;       //increases user picks
+        console.log(userPicks);
         if (userPicks === 1) {
-            card1 = clicked.dataset.name;
-            console.log(card1);
+            card1 = clicked.parentNode.dataset.name;  //pulls name of card for matching purposes
+            console.log(card1);  //just using to check funcality of above code
+            clicked.parentNode.classList.add("choice"); 
             clicked.parentNode.style.transform = "rotateY(180deg)";  //added click style here rather than css
-        } if (userPicks === 2) {
-            card2 = clicked.dataset.name;
+        } if (userPicks === 2 && clicked !== card1) {
+            card2 = clicked.parentNode.dataset.name;
+            console.log(card2);
+            clicked.parentNode.classList.add("choice");
             clicked.parentNode.style.transform = "rotateY(180deg)";
+        } if (userPicks === 2 && card1 !== card2 ) {
+            resetPicks();
         }
     }
 });
+
+const resetPicks = () => {
+    card1 = null;
+    card2 = null;
+    userPicks = 0;
+
+    let choices = document.querySelectorAll(".choice");
+    choices.forEach(card => {
+        card.classList.remove("choice");
+    })
+}
 //need to continue to fix user choices 
 //need to make sure if user clicks on same card it doesn't count as a choice
 //make it so it flips cards back if they are wrong

@@ -44,7 +44,7 @@ main {
   position: relative;
   transition: all 0.5s linear;
   transform-style: preserve-3d;
-  background-color: #fff;
+  /* background-color: #fff; */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -69,7 +69,6 @@ main {
   position: absolute;
   backface-visibility: hidden;
 }
-
 /* commented out - added this code in js
 .clickedOn {
   transform: rotateY(180deg);
