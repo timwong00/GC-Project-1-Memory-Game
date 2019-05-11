@@ -37,7 +37,7 @@ main {
   cursor: pointer;
 }
 
-.card_grid {
+.card_grid, .cover {
   display: flex;
   flex-wrap: wrap;
   width: 55vh;
@@ -83,6 +83,31 @@ div.matched {
   background-image: none !important;  /*removes card on match */
 }
 
+/* Start Game Cover */
+.instructions {
+  color: white;
+  /* display: flex;
+  flex-direction: column; */
+  position: absolute;
+  z-index: 3;
+}
+
+.top_right {
+  padding-right: 10px;
+  top: 0;
+  right: 0;
+}
+
+.top_left {
+  padding-left: 10px;
+}
+
+.cover {
+  height: 70vh;
+  position: absolute;
+  z-index: 2;
+}
+
 @media only screen and (min-width: 768px) {
   body{
     background-image: url("");
@@ -104,28 +129,8 @@ div.matched {
     width: 100vh;
   }
 
-  .instructions {
-    color: white;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    z-index: 3;
-  }
-  
-  .top_right {
-    padding-right: 10px;
-    top: 0;
-    right: 0;
-  }
-  
-  .top_left {
-    padding-left: 10px;
-  }
-
   .cover {
     height: 80vh;
-    position: absolute;
-    z-index: 2;
   }
 
   .card,

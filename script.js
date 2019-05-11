@@ -182,4 +182,3 @@ function resetGame() {
     audio.pause();
     audio.currentTime = 0;
 };
-
