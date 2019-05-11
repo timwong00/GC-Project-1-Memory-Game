@@ -66,9 +66,9 @@ let userPicks = 0;  //declares a variable to try user choices, sets it at 0
 let card1 = null;
 let card2 = null;
 let delay = 1200;  //delay before flipping cards or removing
-let endGame = []; //array to keep track of matches for endGame function
+let endGame = document.getElementsByClassName("matched"); //array to keep track of matches for endGame function
 let winImage = document.getElementById("bran_popup");
-gameOver();
+
 grid.addEventListener("click", function (event) {
     let clicked = event.target;
     if (clicked.parentNode.classList.contains("choice") || clicked === clicked.parentNode.classList.contains("clickedOn") || clicked === clicked.nextSibling.classList.contains("matched")) {  //add class for choice with click, this line makes it so if they click the same card it doesn't count as a choice
@@ -88,9 +88,9 @@ grid.addEventListener("click", function (event) {
             setTimeout(resetPicks, delay);    //calls reset picks function and calls a delay before flipping back
         } else if (userPicks === 2 && card1 === card2) { // tests if user picks 2 card and they match
             setTimeout(matchedPicks, delay);
-            // return;
         }
-    }
+    } 
+    
 });
 
 
@@ -103,6 +103,7 @@ const resetPicks = () => {
     choices.forEach(card => {  //calls array and for each item does below actions
         card.classList.remove("choice");  //removes the choice class add when card was clicked
         card.parentNode.classList.remove("clickedOn");
+        gameOver();
     })
 }
 const matchedPicks = () => {
@@ -110,7 +111,7 @@ const matchedPicks = () => {
     choices.forEach(card => {
         card.classList.remove("choice");
         card.classList.add("matched");
-        endGame.push(choices);
+        gameOver();
     })
     card1 = null;
     card2 = null;
@@ -118,7 +119,7 @@ const matchedPicks = () => {
 }
 //function that calls game over image overlay
 function gameOver() {
-    if (endGame.length === 20) {
+    if (endGame.length == "20") {
         winImage.classList.add("show");
     }
 }
