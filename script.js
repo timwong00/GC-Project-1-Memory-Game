@@ -199,7 +199,8 @@ function startTimer() {
 }
 
 function resetTimer() {
-    timer.innerText = "00:00";
+    // should we display the time if they reset the game or hide it?
+    timer.innerText = "00 : 00";
     minute = 0;
     second = 0;
     clearInterval(interval);
