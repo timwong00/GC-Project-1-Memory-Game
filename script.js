@@ -83,8 +83,12 @@ function createGrid() {
 
 // added a remove grid function
 function removeGrid() {
-    grid.innerHTML = `<p class="instructions top_left">Start Game</p>
-    <p class="instructions top_right">Reset Game</p>
+    grid.innerHTML = `<p class="instructions top_left"><i class="material-icons">
+    arrow_upward
+    </i>Start Game</p>
+    <p class="instructions top_right">Reset Game<i class="material-icons">
+    arrow_upward
+    </i></p>
     <img class="cover" src="https://data.whicdn.com/images/241579758/original.gif" alt="">
     `;
 }
@@ -176,7 +180,7 @@ let interval = null;
 
 function startTimer() {
     interval = setInterval(function () {
-        timer.innerText = minute + " mins " + second + " secs";
+        timer.innerText = minute + " : " + second;
         second++
         if (second == 60) {
             minute++;
