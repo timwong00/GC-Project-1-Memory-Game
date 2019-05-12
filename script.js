@@ -177,25 +177,29 @@ function startGame() {
 let second = 0, minute = 0;
 let timer = document.querySelector(".timer");
 let interval = null;
+let timerOn = 0;
 
 function startTimer() {
-    interval = setInterval(function () {
-        if (second < 10) {
-            timer.innerText = "0" + minute + " : 0" + second;
-        } else if (minute < 60) {
-            timer.innerText = "0" + minute + " : " + second;
-        }
+    timerOn++;
+    if (timerOn === 1) {
+        interval = setInterval(function () {
+            if (second < 10) {
+                timer.innerText = "0" + minute + " : 0" + second;
+            } else if (minute < 60) {
+                timer.innerText = "0" + minute + " : " + second;
+            }
 
-        second++
-        if (second == 60) {
-            minute++;
-            second = 0;
-        }
-        // if (minute == 60) {
-        //     hour++;
-        //     minute = 0;
-        // }
-    }, 1000);
+            second++
+            if (second == 60) {
+                minute++;
+                second = 0;
+            }
+            // if (minute == 60) {
+            //     hour++;
+            //     minute = 0;
+            // }
+        }, 1000);
+    }
 }
 
 function resetTimer() {
@@ -203,6 +207,7 @@ function resetTimer() {
     timer.innerText = "00 : 00";
     minute = 0;
     second = 0;
+    timerOn = 0;
     clearInterval(interval);
 }
 
