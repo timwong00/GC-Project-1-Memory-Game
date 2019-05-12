@@ -180,7 +180,12 @@ let interval = null;
 
 function startTimer() {
     interval = setInterval(function () {
-        timer.innerText = minute + " : " + second;
+        if (second < 10) {
+            timer.innerText = "0" + minute + " : 0" + second;
+        } else if (minute < 60) {
+            timer.innerText = "0" + minute + " : " + second;
+        }
+
         second++
         if (second == 60) {
             minute++;
@@ -194,7 +199,7 @@ function startTimer() {
 }
 
 function resetTimer() {
-    timer.innerHTML = "0 mins 0 secs";
+    timer.innerText = "00:00";
     minute = 0;
     second = 0;
     clearInterval(interval);
