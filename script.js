@@ -12,23 +12,6 @@ main.addEventListener("click", function (event) {
     }
 });
 
-function startTimer() {
-    let second = 0, minute = 0;
-    let timer = document.querySelector(".timer");
-    let interval = setInterval(function () {
-        timer.innerText = minute + " mins " + second + " secs";
-        second++
-        if (second == 60) {
-            minute++;
-            second = 0;
-        }
-        if (minute == 60) {
-            hour++;
-            minute = 0;
-        }
-    }, 1000);
-};
-
 // variable declarations for timers and audio
 //array containing all the card data and images
 const cardArray = [
@@ -79,20 +62,32 @@ let gameGrid = [...cardArray, ...cardArray]; //uses spread operator to double th
 gameGrid.sort(() => 0.5 - Math.random());   //randomizs the gamegrid array using
 
 const grid = document.getElementById("game");  //accesses the section in HTML with ID game
-gameGrid.forEach(item => {                       //for each image in our array
-    const card = document.createElement("div");  //we create a div with a class card
-    card.classList.add("card");
-    card.dataset.name = item.name;
-    const front = document.createElement("div"); //another div for the front of the card with class front
-    front.classList.add("front");
-    front.style.backgroundImage = `url(./images/cardback.jpg)`;
-    const back = document.createElement("div");  //and another div with the class back
-    back.classList.add("back");
-    back.style.backgroundImage = `url(${item.img})`;  //sets the image for the back of the card
-    grid.appendChild(card);
-    card.appendChild(front);
-    card.appendChild(back);
-});
+
+// wrapped the create grid code into the createGrid function
+function createGrid() {
+    gameGrid.forEach(item => {                       //for each image in our array
+        const card = document.createElement("div");  //we create a div with a class card
+        card.classList.add("card");
+        card.dataset.name = item.name;
+        const front = document.createElement("div"); //another div for the front of the card with class front
+        front.classList.add("front");
+        front.style.backgroundImage = `url(./images/cardback.jpg)`;
+        const back = document.createElement("div");  //and another div with the class back
+        back.classList.add("back");
+        back.style.backgroundImage = `url(${item.img})`;  //sets the image for the back of the card
+        grid.appendChild(card);
+        card.appendChild(front);
+        card.appendChild(back);
+    });
+}
+
+// added a remove grid function
+function removeGrid() {
+    grid.innerHTML = `<p class="instructions top_left">Start Game</p>
+    <p class="instructions top_right">Reset Game</p>
+    <img class="cover" src="https://data.whicdn.com/images/241579758/original.gif" alt="">
+    `;
+}
 
 let userPicks = 0;  //declares a variable to try user choices, sets it at 0
 let card1 = null;
@@ -156,9 +151,13 @@ const matchedPicks = () => {
 }
 
 function startGame() {
-    document.getElementsByClassName("cover")[0].style.display = "none";
-    audio.play();
+    // creates grid, starts timer, removes cover when start button is clicked
+    createGrid();
     startTimer();
+    document.getElementsByClassName("cover")[0].style.display = "none";
+    document.getElementsByClassName("instructions")[0].style.display = "none";
+    document.getElementsByClassName("instructions")[1].style.display = "none";
+    audio.play();
     let userPicks = 0;
     grid.addEventListener("click", function (event) {
         let clicked = event.target;
@@ -168,17 +167,41 @@ function startGame() {
             console.log(userPicks);
         }
     });
-
 }
 
-function resetGame() {
-    document.getElementsByClassName("cover")[0].style.display = "block";
-    gameGrid.sort(() => 0.5 - Math.random());
-    let timer = document.querySelector(".timer");
+// Start and Reset Timer variables
+let second = 0, minute = 0;
+let timer = document.querySelector(".timer");
+let interval = null;
+
+function startTimer() {
+    interval = setInterval(function () {
+        timer.innerText = minute + " mins " + second + " secs";
+        second++
+        if (second == 60) {
+            minute++;
+            second = 0;
+        }
+        // if (minute == 60) {
+        //     hour++;
+        //     minute = 0;
+        // }
+    }, 1000);
+}
+
+function resetTimer() {
     timer.innerHTML = "0 mins 0 secs";
     minute = 0;
     second = 0;
     clearInterval(interval);
+}
+
+function resetGame() {
+    // removes grid, displays the cover, pauses and resets audio
+    removeGrid();
+    document.getElementsByClassName("cover")[0].style.display = "block";
+    gameGrid.sort(() => 0.5 - Math.random());
     audio.pause();
     audio.currentTime = 0;
-};
+    resetTimer();
+}

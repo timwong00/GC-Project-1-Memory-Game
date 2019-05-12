@@ -39,6 +39,7 @@ main {
 
 .card_grid, .cover {
   display: flex;
+  position: relative;
   flex-wrap: wrap;
   width: 55vh;
 }
@@ -121,10 +122,12 @@ div.matched {
   .btn_container{
     width: 100vh;
   }
+
   .start_btn, .reset_btn {
     width: 6%;
     height: 6%;
   }
+
   .card_grid, .cover{
     width: 100vh;
   }
