@@ -145,6 +145,9 @@ div.matched {
   visibility: visible !important;
   opacity: 100 !important;
 }
+#finalTime {
+  font-size: 44px;
+}
 
 @media only screen and (min-width: 768px) {
   h1 {
