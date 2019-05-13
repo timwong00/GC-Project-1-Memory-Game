@@ -221,6 +221,8 @@ function gameOver() {
         audio.pause();
         audio.currentTime = 0;
         hodor.play();
+        document.querySelector(".card_grid").style.backgroundColor = "black";
+        document.querySelector(".card_grid").style.border = "1px solid black";
     }
 }
 
