@@ -4,11 +4,14 @@
 }
 
 body {
-  background-color: #D5D0C4;
-  background-size: cover;
+  background-image: url("https://i.pinimg.com/originals/dc/cc/97/dccc977cf97b9b6dd3c5e43bd83cf35d.gif");
+  background-size: 50%;
+  background-color: black;
+  background-repeat: no-repeat;
   font-family: 'Game of Thrones';
   margin: 0;
   padding: 0;
+  color: white;
 }
 
 main {
@@ -42,6 +45,7 @@ main {
   position: relative;
   flex-wrap: wrap;
   width: 55vh;
+  background-color: white;
 }
 
 /* .front {
