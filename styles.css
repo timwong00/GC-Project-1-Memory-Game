@@ -108,12 +108,45 @@ div.matched {
   position: absolute;
   z-index: 2;
 }
+/* below is for Bran popup at game over */
+.overlay {
+  position: fixed;
+  top: 20%;
+  transition: opacity 500ms;
+  visibility: hidden;
+  background-image: url(./images/bran.jpg);
+  background-size: cover;
+  width: 95%;
+  height: 40%;
+}
+.overlay:target {
+  visibility: visible;
+}
+.popup {
+  width: 90%;
+  position: relative;
+  color: #F1EDDC;
+
+}
+.play_again {
+  font-weight: 400;
+  position: relative;
+  left: 20%;
+  top: 20vh;
+}
+.popup .win {
+  font-size: 2em;
+  font-weight: 800;
+  position: absolute;
+  left: 35%;
+  top: 10vh;
+}
+.show {
+  visibility: visible !important;
+  opacity: 100 !important;
+}
 
 @media only screen and (min-width: 768px) {
-  body{
-    background-image: url("");
-  }
-
   h1 {
     margin: 18px;
     font-size: 40px;
@@ -142,4 +175,21 @@ div.matched {
     width: 20vh;
     height: 20vh;
  }
+ .overlay {
+  height: 80%;
+}
+.play_again {
+  font-weight: 400;
+  font-size: 30px;
+  position: relative;
+  left: 25%;
+  top: 50vh;
+}
+.popup .win {
+  font-size: 60px;
+  font-weight: 800;
+  position: absolute;
+  left: 40%;
+  top: 30vh;
+}
 }
