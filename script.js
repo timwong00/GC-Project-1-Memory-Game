@@ -2,8 +2,9 @@
 
 let audio = new Audio("Game of Thrones.mp3");
 
-const main = document.querySelector("main");
+let gridCreated = 0;
 
+const main = document.querySelector("main");
 main.addEventListener("click", function (event) {
     if (event.target.classList.contains("start_btn")) {
         startGame();
@@ -79,6 +80,7 @@ function createGrid() {
         card.appendChild(front);
         card.appendChild(back);
     });
+    gridCreated++;
 }
 
 // added a remove grid function
@@ -91,6 +93,7 @@ function removeGrid() {
     </i></p>
     <img class="cover" src="https://data.whicdn.com/images/241579758/original.gif" alt="">
     `;
+    gridCreated = 0;
 }
 
 let userPicks = 0;  //declares a variable to try user choices, sets it at 0
@@ -156,7 +159,9 @@ const matchedPicks = () => {
 
 function startGame() {
     // creates grid, starts timer, removes cover when start button is clicked
-    createGrid();
+    if (gridCreated === 0) {
+        createGrid();
+    }
     startTimer();
     document.getElementsByClassName("cover")[0].style.display = "none";
     document.getElementsByClassName("instructions")[0].style.display = "none";
