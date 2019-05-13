@@ -169,7 +169,7 @@ function startGame() {
         if (userPicks < 2) {
             userPicks++;
             clicked.parentNode.classList.add("clickedOn");
-            console.log(userPicks);
+            // console.log(userPicks);
         }
     });
 }
