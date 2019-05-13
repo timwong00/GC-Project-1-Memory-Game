@@ -1,5 +1,215 @@
-p {
-    background-color: black;
-    color: white;
-    width: 10%;
+@font-face {
+  font-family: 'Game of Thrones';
+  src: url('./font/Game\ of\ Thrones.ttf');
+}
+
+body {
+  /* background-image: url("https://i.pinimg.com/originals/dc/cc/97/dccc977cf97b9b6dd3c5e43bd83cf35d.gif"); */
+  /* background-size: 50%; */
+  background-color: black;
+  /* background-repeat: no-repeat; */
+  font-family: 'Game of Thrones';
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.btn_container {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  width: 55vh;
+}
+
+.timer {
+  margin: 0;
+  font-size: 25px;
+  font-family: 'Game of Thrones';
+  /* font changed words were much bigger than numbers */
+}
+.start_btn, .reset_btn {
+  width: 10%;
+  height: 10%;
+}
+.start_btn:hover, .reset_btn:hover, .card:hover {
+  cursor: pointer;
+}
+
+.card_grid, .cover {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  width: 55vh;
+  background-color: white;
+}
+
+/* .front {
+  background-image: url(./images/cardback.jpg);
+  background-size: cover;
+} */
+
+.front,
+.back,
+.card {
+  background-size: cover;
+  width: 13.75vh;
+  height: 13.75vh;
+  border: 1px solid rgba(211, 211, 211, 0.52);
+  box-sizing: border-box;
+  position: relative;
+  transition: all 0.5s linear;
+  transform-style: preserve-3d;
+}
+
+.back {
+  /* background-color: transparent; */
+  /* background-size: contain; */
+  /* background-repeat: no-repeat; */
+  background-position: center;
+  transform: rotateY(180deg);
+}
+
+.back,
+.front {
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.clickedOn {
+  transform: rotateY(180deg);
+}
+
+div.matched {
+  background-image: none !important;  /*removes card on match */
+}
+
+/* Start Game Cover */
+.instructions {
+  color: white;
+  /* display: flex;
+  flex-direction: column; */
+  position: absolute;
+  z-index: 3;
+}
+
+.top_right {
+  padding-right: 10px;
+  top: 0;
+  right: 0;
+}
+
+.top_left {
+  padding-left: 10px;
+}
+
+.cover {
+  height: 70vh;
+  position: absolute;
+  z-index: 2;
+}
+/* below is for Bran popup at game over */
+.overlay {
+  position: fixed;
+  top: 18%;
+  transition: opacity 500ms;
+  visibility: hidden;
+  background-image: url(./images/bran.jpg);
+  background-size: cover;
+  background-position: center;
+  width: 55vh;
+  height: 80vh;
+}
+.overlay:target {
+  visibility: visible;
+}
+.popup {
+  width: 90%;
+  position: relative;
+  color: #F1EDDC;
+
+}
+.play_again {
+  font-weight: 400;
+  position: relative;
+  left: 15%;
+  top: 40vh;
+}
+.popup .win {
+  font-size: 2em;
+  font-weight: 800;
+  position: absolute;
+  left: 30%;
+  top: 30vh;
+}
+.show {
+  visibility: visible !important;
+  opacity: 100 !important;
+}
+#finalTime {
+  font-size: 24px;
+}
+
+@media only screen and (min-width: 768px) {
+  body {
+    background-image: url("https://i.pinimg.com/originals/dc/cc/97/dccc977cf97b9b6dd3c5e43bd83cf35d.gif");
+    background-size: 50%;
+    background-repeat: no-repeat;
+  }
+  h1 {
+    margin: 18px;
+    font-size: 40px;
+  }
+
+  .btn_container{
+    width: 100vh;
+  }
+
+  .start_btn, .reset_btn {
+    width: 6%;
+    height: 6%;
+  }
+
+  .card_grid, .cover{
+    width: 100vh;
+  }
+
+  .cover {
+    height: 80vh;
+  }
+
+  .card,
+  .front,
+  .back {
+    width: 20vh;
+    height: 20vh;
+ }
+ .overlay {
+  width: 95%;
+  height: 100%;
+ }
+ .play_again {
+  font-weight: 400;
+  font-size: 30px;
+  position: relative;
+  left: 25%;
+  top: 50vh;
+ }
+ .popup .win {
+  font-size: 60px;
+  font-weight: 800;
+  position: absolute;
+  left: 40%;
+  top: 30vh;
+ }
+ #finalTime {
+  font-size: 44px;
+ }
 }

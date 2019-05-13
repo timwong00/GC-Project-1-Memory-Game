@@ -7,26 +7,43 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Game of Memory</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
     <main>
-        <p>Game will end in <span class="js-timeout">2:00</span></p>
 
         <section class="title">
             <h1>Game of Memory</h1>
         </section>
         <section class="btn_container">
-            <button id="" class="start_btn">Start Game</button>
-            <!-- need timer -->
-            <button id="" class="reset_btn">Reset</button>
+            <img src="./images/sword.png" alt="" class="start_btn">
+            <p class="timer"></p>
+            <img src="./images/shield.png" alt="" class="reset_btn">
         </section>
-        <section class="card_grid">
-            <img src="" alt="bran">
+        <section id="game" class="card_grid">
+            <p class="instructions top_left"><i class="material-icons">
+                    arrow_upward
+                </i>Start Game</p>
+            <p class="instructions top_right">Reset Game<i class="material-icons">
+                    arrow_upward
+                </i></p>
+            <img class="cover" src="https://data.whicdn.com/images/241579758/original.gif" alt="">
         </section>
 
+        <section id="bran_popup" class="overlay">
+            <div class="popup">
+                <p class="win">You won</p>
+                <p class="play_again">It took you <span id="finalTime"></span> to hold the door.</p>
+                <p class="play_again">Click on the shield to play again</p>
+                <!-- <img src="./images/bran.jpg" alt=""> -->
+            </div>
+        </section>
+
+
+
     </main>
+
 
     <script src="script.js"></script>
 </body>
