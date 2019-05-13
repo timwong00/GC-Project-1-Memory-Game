@@ -195,6 +195,7 @@ function resetGame() {
     audio.pause();
     audio.currentTime = 0;
     resetTimer();
+    winImage.classList.remove("show");
 }
 //function that calls game over image overlay
 function gameOver() {
