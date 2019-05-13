@@ -1,4 +1,18 @@
 "use strict";
+let audio = new Audio("Game of Thrones.mp3");
+let hodor = new Audio("hodor.mp3");
+
+const main = document.querySelector("main");
+
+main.addEventListener("click", function (event) {
+    if (event.target.classList.contains("start_btn")) {
+        startGame();
+    } else if (event.target.classList.contains("reset_btn")) {
+        resetGame();
+    }
+});
+
+// variable declarations for timers and audio
 //array containing all the card data and images
 const cardArray = [
     {
@@ -45,23 +59,34 @@ const cardArray = [
 
 
 let gameGrid = [...cardArray, ...cardArray]; //uses spread operator to double the cardarray into new array called gamegrid
-gameGrid.sort(() => 0.5 - Math.random());   //randomizs the gamegrid array using
+gameGrid.sort(() => 0.5 - Math.random());   //randomizs the gamegrid array using mathrandom
 
 const grid = document.getElementById("game");  //accesses the section in HTML with ID game
-gameGrid.forEach(item => {                       //for each image in our array
-    const card = document.createElement("div");  //we create a div with a class card
-    card.classList.add("card");
-    card.dataset.name = item.name;
-    const front = document.createElement("div"); //another div for the front of the card with class front
-    front.classList.add("front");
-    front.style.backgroundImage = `url(./images/cardback.jpg)`;
-    const back = document.createElement("div");  //and another div with the class back
-    back.classList.add("back");
-    back.style.backgroundImage = `url(${item.img})`;  //sets the image for the back of the card
-    grid.appendChild(card);
-    card.appendChild(front);
-    card.appendChild(back);
-});
+// wrapped the create grid code into the createGrid function
+function createGrid() {
+    gameGrid.forEach(item => {                       //for each image in our array
+        const card = document.createElement("div");  //we create a div with a class card
+        card.classList.add("card");
+        card.dataset.name = item.name;
+        const front = document.createElement("div"); //another div for the front of the card with class front
+        front.classList.add("front");
+        front.style.backgroundImage = `url(./images/cardback.jpg)`;
+        const back = document.createElement("div");  //and another div with the class back
+        back.classList.add("back");
+        back.style.backgroundImage = `url(${item.img})`;  //sets the image for the back of the card
+        grid.appendChild(card);
+        card.appendChild(front);
+        card.appendChild(back);
+    });
+}
+
+// added a remove grid function
+function removeGrid() {
+    grid.innerHTML = `<p class="instructions top_left">Start Game</p>
+    <p class="instructions top_right">Reset Game</p>
+    <img class="cover" src="https://data.whicdn.com/images/241579758/original.gif" alt="">
+    `;
+}
 let userPicks = 0;  //declares a variable to try user choices, sets it at 0
 let card1 = null;
 let card2 = null;
@@ -89,8 +114,8 @@ grid.addEventListener("click", function (event) {
         } else if (userPicks === 2 && card1 === card2) { // tests if user picks 2 card and they match
             setTimeout(matchedPicks, delay);
         }
-    } 
-    
+    }
+
 });
 
 
@@ -117,10 +142,70 @@ const matchedPicks = () => {
     card2 = null;
     userPicks = 0;
 }
+function startGame() {
+    // creates grid, starts timer, removes cover when start button is clicked
+    createGrid();
+    startTimer();
+    document.getElementsByClassName("cover")[0].style.display = "none";
+    document.getElementsByClassName("instructions")[0].style.display = "none";
+    document.getElementsByClassName("instructions")[1].style.display = "none";
+    audio.play();
+    let userPicks = 0;
+    grid.addEventListener("click", function (event) {
+        let clicked = event.target;
+        if (userPicks < 2) {
+            userPicks++;
+            clicked.parentNode.classList.add("clickedOn");
+        }
+    });
+}
+
+// Start and Reset Timer variables
+let second = 0, minute = 0;
+let timer = document.querySelector(".timer");
+let interval = null;
+
+function startTimer() {
+    interval = setInterval(function () {
+        timer.innerText = minute + " mins " + second + " secs";
+        second++
+        if (second == 60) {
+            minute++;
+            second = 0;
+        }
+        // if (minute == 60) {
+        //     hour++;
+        //     minute = 0;
+        // }
+    }, 1000);
+}
+
+function resetTimer() {
+    timer.innerHTML = "0 mins 0 secs";
+    minute = 0;
+    second = 0;
+    clearInterval(interval);
+}
+
+function resetGame() {
+    // removes grid, displays the cover, pauses and resets audio
+    removeGrid();
+    document.getElementsByClassName("cover")[0].style.display = "block";
+    gameGrid.sort(() => 0.5 - Math.random());
+    audio.pause();
+    audio.currentTime = 0;
+    resetTimer();
+}
 //function that calls game over image overlay
 function gameOver() {
     if (endGame.length == "20") {
+        clearInterval(interval);
+        let finalTime = timer.innerHTML;
         winImage.classList.add("show");
+        document.getElementById("finalTime").innerHTML = finalTime;
+        audio.pause();
+        hodor.play();
+        audio.currentTime = 0;
     }
 }
 

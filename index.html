@@ -16,20 +16,24 @@
             <h1>Game of Memory</h1>
         </section>
         <section class="btn_container">
-            <!-- <button class="start_btn">Start Game</button> -->
             <img src="./images/sword.png" alt="" class="start_btn">
-            <!-- need timer -->
-            <!-- <button class="reset_btn">Reset</button> -->
+            <p class="timer"></p>
             <img src="./images/shield.png" alt="" class="reset_btn">
         </section>
         <section id="game" class="card_grid">
-            <!-- <img src="./images/bran.jpg" alt="bran"> -->
+            <!-- <div class="cover"> -->
+            <p class="instructions top_left">Start Game</p>
+            <p class="instructions top_right">Reset Game</p>
+            <img class="cover" src="https://data.whicdn.com/images/241579758/original.gif" alt="">
+            <!-- </div> -->
         </section>
 
         <section id="bran_popup" class="overlay">
             <div class="popup">
-                <a class="close" href=#>×</a>
-                <img src="./images/bran.jpg" alt="">
+                <p class="win">You won!</p>
+                <p class="play_again">It took you <span id="finalTime"></span> to hold the door.</p>
+                <p class="play_again">Click on the shield to play again</p>
+                <!-- <img src="./images/bran.jpg" alt=""> -->
             </div>
         </section>
 
